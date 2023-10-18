@@ -1,12 +1,9 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         solve1();
     }
 
@@ -14,12 +11,13 @@ public class Main {
         System.out.print(line);
     }
 
-    public static void solve1() {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
+    public static void solve1() throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
 
-        long x = sc.nextLong();
-        long y = sc.nextLong();
+        String[] firstLine = br.readLine().split(" ");
+        long x = Long.parseLong(firstLine[0]);
+        long y = Long.parseLong(firstLine[1]);
 
         BinaryTree tree = new BinaryTree();
         long wellY = y;
@@ -31,11 +29,14 @@ public class Main {
         int lower = 0;
         int equal = 1;
 
-        output(wellY + " " + (sumX + sumY) + "\n");
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(wellY + " " + (sumX + sumY) + "\n");
 
         for (int i = 1; i < N; i++) {
-            x = sc.nextLong();
-            y = sc.nextLong();
+            String[] lines = br.readLine().split(" ");
+            x = Long.parseLong(lines[0]);
+            y = Long.parseLong(lines[1]);
             sumX += Math.abs(x);
             sumY += Math.abs(y - wellY);
             tree.add(y);
@@ -72,13 +73,15 @@ public class Main {
             }
 
             if (i != N - 1) {
-                output(wellY + " " + (sumX + sumY) + "\n");
+                sb.append(wellY + " " + (sumX + sumY) + "\n");
             } else {
-                output(wellY + " " + (sumX + sumY));
+                sb.append(wellY + " " + (sumX + sumY));
             }
         }
 
-        sc.close();
+        output(sb.toString());
+
+        br.close();
     }
 
     static class BinaryTree {
