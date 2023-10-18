@@ -1,34 +1,39 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         LinkedListStack stack = new LinkedListStack();
+        StringBuilder sb = new StringBuilder();
 
-        int N = sc.nextInt();
+        int N = Integer.parseInt(br.readLine().split(" ")[0]);
         for (int i = 0; i < N; i++) {
-            int cmd = sc.nextInt();
+            String[] input = br.readLine().split(" ");
+            int cmd = Integer.parseInt(input[0]);
             switch (cmd) {
                 case 1:
-                    int integer = sc.nextInt();
+                    int integer = Integer.parseInt(input[1]);
                     stack.push(integer);
                     break;
                 case 2:
-                    System.out.println(stack.pop());
+                    sb.append(stack.pop() + "\n");
                     break;
                 case 3:
-                    System.out.println(stack.size());
+                    sb.append(stack.size() + "\n");
                     break;
                 case 4:
-                    System.out.println(stack.isEmpty());
+                    sb.append(stack.isEmpty() + "\n");
                     break;
                 case 5:
-                    System.out.println(stack.top());
+                    sb.append(stack.top() + "\n");
                     break;
             }
         }
 
-        sc.close();
+        System.out.print(sb.toString());
+
+        br.close();
     }
 
     static class LList {
