@@ -1,3 +1,4 @@
+package level1;
 // https://school.programmers.co.kr/learn/courses/30/lessons/250137
 public class Lv1_Bandage {
 
