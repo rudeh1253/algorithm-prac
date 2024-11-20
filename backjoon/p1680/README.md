@@ -1,0 +1,1 @@
+# [쓰레기 수거](https://www.acmicpc.net/problem/1680)
