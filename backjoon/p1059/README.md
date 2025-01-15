@@ -1,0 +1,1 @@
+# [좋은 구간](https://www.acmicpc.net/problem/1059)
